@@ -1,11 +1,5 @@
 extends layout
-
-mixin outputRating(rating)
-  - for (var i = 1; i <= rating; i++)
-    span.glyphicon.glyphicon-star
-  - for (i = rating; i < 5; i++)
-    span.glyphicon.glyphicon-star-empty
-
+include _includes/sharedHTMLfunctions
 block content
   #banner.page-header
     .row
@@ -28,4 +22,4 @@ block content
                   span.label.label-warning= facility
                   &nbsp;
     .col-xs-12.col-sm-4
-      p.lead Looking for wifi and a seat? Loct8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let Loct8r help you find the place you're looking for.
+      p.lead= sidebar
