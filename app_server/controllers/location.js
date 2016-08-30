@@ -10,20 +10,20 @@ module.exports.homelist = function(req,res){
       name: 'Starcups',
       address: '125 High Street, Reading, RG6 1PS',
       rating: 3,
-      facilities:['Hir Drinks', 'Food', 'Premium wifi'],
+      facilities:['Hot Drinks', 'Food', 'Premium wifi'],
       distance: '100m'
     },{
       name: 'Cafe Hero',
-      address: '125 High Street, Reading, RG6 1PS',
+      address: '127 High Street, Reading, RG6 1PS',
       rating: 4,
-      facilities:['Hir Drinks', 'Food', 'Premium wifi'],
+      facilities:['Hot Drinks', 'Food', 'Premium wifi'],
       distance: '200m'
     },{
       name: 'Burguer Queen',
-      address: '125 High Street, Reading, RG6 1PS',
+      address: '130 High Street, Reading, RG6 1PS',
       rating: 2,
       facilities:['Food', 'Premium wifi'],
-      distance: '100m'
+      distance: '150m'
     }]
   });
 };
