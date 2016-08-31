@@ -30,7 +30,14 @@ module.exports.homelist = function(req,res){
 };
 /* GET 'Location Info' page */
 module.exports.locationInfo = function(req,res){
-  res.render('location-info', {title: 'Location Info' });
+  res.render('location-info', {
+    title: 'Starcups',
+    pageHeader: {title: 'Starcups'},
+    sidebar: {
+      context: 'is on Loct8r because it has accessible wifi and space to sit down with your laptop and get some work done.',
+      callToAction: 'If you\'ve been and you like it - or if you don\'t please leave a review to help other people just like you.'
+    },
+  });
 };
 /* GET 'Add new review' page */
 module.exports.addReview = function(req,res){
