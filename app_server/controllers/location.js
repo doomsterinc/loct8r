@@ -73,5 +73,8 @@ module.exports.locationInfo = function(req,res){
 };
 /* GET 'Add new review' page */
 module.exports.addReview = function(req,res){
-  res.render('location-review-form', { title: 'Add Review'});
+  res.render('location-review-form', {
+    title: 'Review Starcups on Loct8r',
+    pageHeader: {title: 'Review Starcups'}
+  });
 };
