@@ -51,8 +51,8 @@ module.exports.locationInfo = function(req,res){
       },{
         days: 'Saturday',
         opening: '8:00am',
-        closing: '5:00pm'
-        close: false
+        closing: '5:00pm',
+        closed: false
       },{
         days: 'Sunday',
         closed: true
