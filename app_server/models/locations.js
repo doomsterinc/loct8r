@@ -6,6 +6,13 @@ var reviewSchema = new mongoose.Schema({
   reviewText: String,
   createdOn: {type: Date, default: Date.now}
 });
+/* Opening Time Schema */
+var openingTimeSchema = new mongoose.Schema({
+  days: {type: String, required: true},
+  opening: String,
+  closing: String,
+  closed: {type: Boolean, required: true}
+});
 /* Location Schema */
 var locationSchema = new mongoose.Schema({
   name: {type: String, required: true},
