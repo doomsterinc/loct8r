@@ -23,3 +23,5 @@ var locationSchema = new mongoose.Schema({
   openingTimes: [openingTimeSchema],
   reviews: [reviewSchema]
 });
+/* Compiling model from Schema Location */
+mongoose.model('Location', locationSchema);
