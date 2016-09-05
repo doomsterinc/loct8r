@@ -1,13 +1,13 @@
 {
   "name": "loct8r",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
-  "engines":{
-    "node":"~5.4.1",
-    "npm":"~3.3.12"
+  "engines": {
+    "node": "~5.4.1",
+    "npm": "~3.3.12"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -18,5 +18,25 @@
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.0",
     "mongoose": "~3.8.20"
-  }
+  },
+  "description": "WebApp with NodeJS, Express, AngularJS an MongoDB",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doomsterinc/loct8r.git"
+  },
+  "keywords": [
+    "MEAN",
+    "NodeJS",
+    "Express",
+    "JS",
+    "MongoDB"
+  ],
+  "author": "Maicon Giovani (Doomster)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doomsterinc/loct8r/issues"
+  },
+  "homepage": "https://github.com/doomsterinc/loct8r#readme"
 }
