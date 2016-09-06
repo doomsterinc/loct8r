@@ -17,3 +17,37 @@ openingTimes: [{
   days: 'Sunday',
   closed: true
 }]
+
+db.locations.save({name: 'Squina',
+address: '125 High Street, Reading, RG6 1PS',
+rating: 3,
+facilities: ['Hot Drinks', 'Food', 'Premium wifi'],
+coords: [0.9690884, 51.455041],
+openingTimes: [{
+  days: 'Monday - Friday',
+  opening: '7:00am',
+  closing: '7:00pm',
+  closed: false
+},{
+  days: 'Saturday',
+  opening: '8:00am',
+  closing: '5:00pm',
+  closed: false
+},{
+  days: 'Sunday',
+  closed: true
+}]})
+
+db.locations.update({
+  name: 'Squina'
+}, {
+  $push: {
+    reviews: {
+      author: 'Maricon',
+      id: ObjectId(),
+      rating: 2,
+      timestamp: new Date('16 July 2013'),
+      reviewText: 'What a great place. I can\'t say enough good things about it.'
+    }
+  }
+})
