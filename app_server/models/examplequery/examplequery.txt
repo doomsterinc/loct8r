@@ -1,4 +1,4 @@
-
+ 
 db.locations.save({name: 'Squina',
 address: '125 High Street, Reading, RG6 1PS',
 rating: 3,
