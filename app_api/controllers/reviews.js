@@ -8,7 +8,7 @@ var sendJSONresponse = function(res, status, content) {
 
 /* GET a review by the locationid */
 module.exports.reviewsReadOne = function(req, res) {
-  sendJSONresponse(res, 200, {'status': 'sucess'});
+  
 };
 
 /* POST a new review */
