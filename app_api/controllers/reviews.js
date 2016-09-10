@@ -21,6 +21,12 @@ module.exports.reviewsReadOne = function(req, res) {
             sendJSONresponse(res, 404, err);
             return;
           }
+          if(location.reviews && location.reviews.lenght > 0){
+            review = location.reviews.id(req.params.reviewid);
+            if (!review) {
+              sendJSONresponse(res, 404, {"message" : "reviewid not found"});
+            }
+          }
           sendJSONresponse(res, 200, location);
         });
   } else {
