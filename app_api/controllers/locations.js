@@ -26,14 +26,26 @@ module.exports.locationsListByDistance = function(req, res) {
   var lat = parseFloat(req.query.lat);
   var maxDistance = parseFloat(req.query.maxDistance);
   var point = {
-    type = "Point",
+    type : "Point",
     coordinates : [lng, lat]
   };
   var geoOptions = {
     spherical : true,
-    maxDistance: theEarth.getRadsFromDistance(maxDistance);
+    maxDistance: theEarth.getRadsFromDistance(maxDistance)
   };
-  Loc.geoNear(point, geoOptions, callback);
+  Loc.geoNear(point, geoOptions, function(err, results, stats){
+    var locations = [];
+    results.forEach(function(doc){
+      locations.push({
+        distance: theEarth.getDistanceFromRads(doc.dis),
+        name: doc.obj.name,
+        address: doc.obj.rating,
+        facilities: doc.obj.facilities,
+        _id: doc.obj._id
+      });
+    });
+    sendJSONresponse(res, 200, locations);
+  });
 };
 
 /* GET a location by the id */
