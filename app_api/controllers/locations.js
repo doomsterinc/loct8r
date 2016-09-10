@@ -8,7 +8,13 @@ var sendJSONresponse = function(res, status, content) {
 
 /* GET list of locations */
 module.exports.locationsListByDistance = function(req, res) {
-  sendJSONresponse(res, 200, {'status': 'sucess'});
+  var lng = parseFloat(req.query.lng);
+  var lat = parseFloat(req.query.lat);
+  var point = {
+    type = "Point",
+    coordinates : [lng, lat]
+  };
+  Loc.geoNear(point, options, callback);
 };
 
 /* GET a location by the id */
