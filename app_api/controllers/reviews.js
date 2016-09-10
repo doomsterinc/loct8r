@@ -8,7 +8,7 @@ var sendJSONresponse = function(res, status, content) {
 
 /* GET a review by the locationid */
 module.exports.reviewsReadOne = function(req, res) {
-  if(req.params && req.params.locationid){
+  if(req.params && req.params.locationid && req.params.reviewid){
     Loc
         .findById(req.params.locationid)
         .exec(function(err, location){
