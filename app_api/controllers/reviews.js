@@ -57,7 +57,25 @@ module.exports.reviewsReadOne = function(req, res) {
 /* POST a new review */
 /* /api/locations/:locationid/review */
 module.exports.reviewsCreate = function(req, res) {
-  sendJSONresponse(res, 200, {'status': 'sucess'});
+  var locationid = req.params.locationid;
+  if (locationid){
+    Loc
+        .findById(locationid)
+        .select('reviews')
+        .exec(
+          function(err, location){
+            if (err) {
+              sendJSONresponse(res, 400, err);
+            } else {
+              doAddReview(req, res, location);
+            }
+          }
+        );
+  } else {
+    sendJSONresponse(res, 404, {
+      "message" : "Not found, locationid required"
+    });
+  }
 };
 
 /* PUT /api/locations/:locationid/reviews/:reviewid */
