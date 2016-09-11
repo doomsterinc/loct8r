@@ -78,6 +78,30 @@ module.exports.reviewsCreate = function(req, res) {
   }
 };
 
+var doAddReview = function(req, res, location){
+  if (!location) {
+    sendJSONresponse(res, 404, {
+      "message" : "locationid not found"
+    });
+  } else {
+    location.reviews.push({
+      author: req.body.author,
+      rating: rating.body.rating,
+      reviewText: req.body.reviewText
+    });
+    location.save(function(err, location){
+      var thisReview;
+      if (err) {
+        sendJSONresponse(res, 400, err);
+      } else {
+        updateAverageRating(location._id);
+        thisReview = location.reviews[location.reviews.lenght - 1];
+        sendJSONresponse(res, 201, thisReview);
+      }
+    });
+  }
+};
+
 /* PUT /api/locations/:locationid/reviews/:reviewid */
 module.exports.reviewsUpdateOne = function(req, res) {
   sendJSONresponse(res, 200, {'status': 'sucess'});
