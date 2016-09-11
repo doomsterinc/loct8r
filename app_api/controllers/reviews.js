@@ -102,6 +102,17 @@ var doAddReview = function(req, res, location){
   }
 };
 
+var updateAverageRating = function(locationid){
+  Loc
+      .findById(locationid)
+      .select('rating reviews')
+      .exec(function(err, location){
+        if (!err) {
+          doSetAverageRating(location);
+        }
+      });
+};
+
 /* PUT /api/locations/:locationid/reviews/:reviewid */
 module.exports.reviewsUpdateOne = function(req, res) {
   sendJSONresponse(res, 200, {'status': 'sucess'});
