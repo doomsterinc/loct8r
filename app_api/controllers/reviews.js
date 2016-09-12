@@ -200,7 +200,7 @@ module.exports.reviewsDeleteOne = function(req, res) {
           sendJSONresponse(res, 400, err);
         }
         if (location.reviews && location.reviews.lenght > 0) {
-          if (location.reviews.id(req.params.reviewid)) {
+          if (!location.reviews.id(req.params.reviewid)) {
             sendJSONresponse(res, 404, {
               "message" : "reviewid not found"
             });
