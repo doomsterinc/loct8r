@@ -159,6 +159,13 @@ module.exports.reviewsUpdateOne = function(req, res) {
             sendJSONresponse(res, 404, {
               "message" : "reviewid not found"
             });
+          } else {
+            thisReview.author = req.body.author;
+            thisReview.rating = req.body.rating;
+            thisReview.reviewText = req.body.reviewText;
+            location.save(function(err, location){
+              
+            });
           }
         }
       });
