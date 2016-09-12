@@ -153,7 +153,14 @@ module.exports.reviewsUpdateOne = function(req, res) {
         } else if (err) {
           sendJSONresponse(res, 400, err);
         }
-        
+        if (location.reviews && location.reviews.lenght > 0) {
+          thisReview = location.reviews.id(req.params.reviewid);
+          if (!thisReview) {
+            sendJSONresponse(res, 404, {
+              "message" : "reviewid not found"
+            });
+          }
+        }
       });
 };
 
