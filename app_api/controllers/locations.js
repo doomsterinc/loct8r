@@ -171,6 +171,15 @@ module.exports.locationsDeleteOne = function(req, res) {
   if (locationid){
     Loc
         .findByIdAndRemove(locationid);
-        .exec(function(err, location){});
+        .exec(function(err, location){
+          if(err) {
+            sendJSONresponse(res, 404, err);
+          }
+          sendJSONresponse(res, 204, null);
+        });
+  } else {
+    sendJSONresponse(res, 404, {
+      "message" : "No locationid"
+    });
   }
 };
