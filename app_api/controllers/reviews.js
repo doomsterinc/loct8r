@@ -141,6 +141,10 @@ module.exports.reviewsUpdateOne = function(req, res) {
     });
     return;
   }
+  Loc
+      .findById(req.params.locationid)
+      .select("reviews")
+      .exec();
 };
 
 /* DELETE /api/locations/:locationid/reviews/:reviewid */
