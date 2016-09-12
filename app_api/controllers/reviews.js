@@ -144,7 +144,9 @@ module.exports.reviewsUpdateOne = function(req, res) {
   Loc
       .findById(req.params.locationid)
       .select("reviews")
-      .exec();
+      .exec(function(err, location){
+        
+      });
 };
 
 /* DELETE /api/locations/:locationid/reviews/:reviewid */
