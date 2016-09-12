@@ -135,9 +135,9 @@ var doSetAverageRating = function(location){
 
 /* PUT /api/locations/:locationid/reviews/:reviewid */
 module.exports.reviewsUpdateOne = function(req, res) {
-  if (!req.params.locationid) {
+  if (!req.params.locationid || req.params.reviewid) {
     sendJSONresponse(res, 404, {
-      "message" : "Not found, locationid is required"
+      "message" : "Not found, locationid and reviewid are both required"
     });
     return;
   }
