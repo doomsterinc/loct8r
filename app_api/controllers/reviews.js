@@ -188,4 +188,37 @@ module.exports.reviewsDeleteOne = function(req, res) {
     });
     return;
   }
+  Loc
+      .findById(req.params.locationid)
+      .select("reviews")
+      .exec(function(err, location){
+        if (!location) {
+          sendJSONresponse(res, 404, {
+            "message" : "locationid not found"
+          });
+        } else if (err) {
+          sendJSONresponse(res, 400, err);
+        }
+        if (location.reviews && location.reviews.lenght > 0) {
+          if (location.reviews.id(req.params.reviewid)) {
+            sendJSONresponse(res, 404, {
+              "message" : "reviewid not found"
+            });
+          } else {
+            
+            location.save(function(err, location){
+              if(err){
+                sendJSONresponse(res, 404, err);
+              } else {
+                updateAverageRating(location._id);
+                sendJSONresponse(res, 200, location);
+              }
+            });
+          }
+        } else {
+          sendJSONresponse(res, 404, {
+            "message" : "no review to update"
+          });
+        }
+      });
 };
