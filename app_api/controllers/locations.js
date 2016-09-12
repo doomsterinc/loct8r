@@ -135,8 +135,10 @@ module.exports.locationsUpdateOne = function(req, res) {
           sendJSONresponse(res, 404, {
             "message" : "locationid not found"
           });
+          return;
         } else if (err) {
           sendJSONresponse(res, 400, err);
+          return;
         }
         location.name = req.body.name;
         location.address = req.body.address;

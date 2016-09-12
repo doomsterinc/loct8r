@@ -145,7 +145,12 @@ module.exports.reviewsUpdateOne = function(req, res) {
       .findById(req.params.locationid)
       .select("reviews")
       .exec(function(err, location){
-        
+        var thisReview;
+        if (!location) {
+          sendJSONresponse(res, 404, {
+            "message" : "locationid not found"
+          });
+        } else if
       });
 };
 
