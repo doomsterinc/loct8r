@@ -205,19 +205,19 @@ module.exports.reviewsDeleteOne = function(req, res) {
               "message" : "reviewid not found"
             });
           } else {
-            
+            location.reviews.id(req.params.reviewid).remove();
             location.save(function(err, location){
               if(err){
                 sendJSONresponse(res, 404, err);
               } else {
                 updateAverageRating(location._id);
-                sendJSONresponse(res, 200, location);
+                sendJSONresponse(res, 204, null);
               }
             });
           }
         } else {
           sendJSONresponse(res, 404, {
-            "message" : "no review to update"
+            "message" : "no review to delete"
           });
         }
       });
