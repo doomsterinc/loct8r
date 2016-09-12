@@ -121,7 +121,13 @@ module.exports.locationsCreate = function(req, res) {
 
 /* PUT /api/locations/:locationid */
 module.exports.locationsUpdateOne = function(req, res) {
-  sendJSONresponse(res, 200, {'status': 'sucess'});
+  if (!req.params.locationid) {
+    sendJSONresponse(res, 404, {
+      "message" : "Not found, locationid is required"
+    });
+    return;
+  }
+  
 };
 
 /* DELETE /api/locations/:locationid */
