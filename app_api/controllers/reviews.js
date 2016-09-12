@@ -164,9 +164,18 @@ module.exports.reviewsUpdateOne = function(req, res) {
             thisReview.rating = req.body.rating;
             thisReview.reviewText = req.body.reviewText;
             location.save(function(err, location){
-              
+              if(err){
+                sendJSONresponse(res, 404, err);
+              } else {
+                updateAverageRating(location._id);
+                sendJSONresponse(res, 200, location);
+              }
             });
           }
+        } else {
+          sendJSONresponse(res, 404, {
+            "message" : "no review to update"
+          });
         }
       });
 };
