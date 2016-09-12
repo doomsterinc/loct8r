@@ -135,7 +135,7 @@ var doSetAverageRating = function(location){
 
 /* PUT /api/locations/:locationid/reviews/:reviewid */
 module.exports.reviewsUpdateOne = function(req, res) {
-  if (!req.params.locationid || req.params.reviewid) {
+  if (!req.params.locationid || !req.params.reviewid) {
     sendJSONresponse(res, 404, {
       "message" : "Not found, locationid and reviewid are both required"
     });
@@ -182,5 +182,10 @@ module.exports.reviewsUpdateOne = function(req, res) {
 
 /* DELETE /api/locations/:locationid/reviews/:reviewid */
 module.exports.reviewsDeleteOne = function(req, res) {
-  sendJSONresponse(res, 200, {'status': 'sucess'});
+  if (!req.params.locationid || !req.params.reviewid) {
+    sendJSONresponse(res, 404, {
+      "message" : "Not found, locationid and reviewid are both required"
+    });
+    return;
+  }
 };
