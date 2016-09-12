@@ -150,7 +150,10 @@ module.exports.reviewsUpdateOne = function(req, res) {
           sendJSONresponse(res, 404, {
             "message" : "locationid not found"
           });
-        } else if
+        } else if (err) {
+          sendJSONresponse(res, 400, err);
+        }
+        
       });
 };
 
