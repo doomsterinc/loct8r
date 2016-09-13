@@ -28,6 +28,15 @@ var _formatDistance = function (distance) {
 
 //render Homepage
 var renderHomepage = function(req, res, responseBody){
+  var message;
+  if (!(responseBody instanceof Array)) {
+    message = "API lookup error";
+    responseBody = [];
+  } else {
+    if (!responseBody.length) {
+      message = "No places found nearby";
+    }
+  }
   res.render('locations-list', {
       title: 'loct8r - find a place to work with wifi',
       pageHeader: {
@@ -35,7 +44,8 @@ var renderHomepage = function(req, res, responseBody){
           strapline: 'Find places to work with wifi near you!'
       },
       sidebar: "Looking for wifi and a seat? loct8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let loct8r help you find the place you're looking for.",
-      locations: responseBody
+      locations: responseBody,
+      message : message
   });
 };
 /* GET 'home' page */
