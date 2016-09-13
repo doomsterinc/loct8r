@@ -5,6 +5,28 @@ var apiOptions = {
 if (process.env.NODE_ENV === 'production') {
   apiOptions.server = 'http://arcane-fortress-27171.herokuapp.com/';
 }
+
+// format distance
+var _isNumeric = function (n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
+var _formatDistance = function (distance) {
+  var numDistance, unit;
+  if (distance && _isNumeric(distance)) {
+    if (distance > 1) {
+      numDistance = parseFloat(distance).toFixed(1);
+      unit = 'km';
+    } else {
+      numDistance = parseInt(distance * 1000,10);
+      unit = 'm';
+    }
+    return numDistance + unit;
+  } else {
+    return "?";
+  }
+};
+
+//render Homepage
 var renderHomepage = function(req, res, responseBody){
   res.render('locations-list', {
       title: 'loct8r - find a place to work with wifi',
@@ -39,25 +61,6 @@ module.exports.homelist = function(req, res) {
       renderHomepage(req, res, data);
     }
   );
-  var _isNumeric = function (n) {
-    return !isNaN(parseFloat(n)) && isFinite(n);
-  };
-
-  var _formatDistance = function (distance) {
-    var numDistance, unit;
-    if (distance && _isNumeric(distance)) {
-      if (distance > 1) {
-        numDistance = parseFloat(distance).toFixed(1);
-        unit = 'km';
-      } else {
-        numDistance = parseInt(distance * 1000,10);
-        unit = 'm';
-      }
-      return numDistance + unit;
-    } else {
-      return "?";
-    }
-  };
 };
 
 /* GET 'Location info' page */
