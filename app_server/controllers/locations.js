@@ -1,4 +1,10 @@
 var request = require('request');
+var apiOption = {
+  server : "http://localhost:3000"
+};
+if (process.env.NODE_ENV === "production") {
+  apiOption.server = "https://arcane-fortress-27171.herokuapp.com/"
+}
 /* GET 'home' page */
 module.exports.homelist = function(req, res) {
     res.render('locations-list', {
