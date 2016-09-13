@@ -21,7 +21,7 @@ module.exports.homelist = function(req, res) {
   var requestOptions, path;
   path = '/api/locations'
   requestOptions = {
-    url : apiOptions + path,
+    url : apiOptions.server + path,
     method : "GET",
     json : {},
     qs : {
@@ -30,9 +30,7 @@ module.exports.homelist = function(req, res) {
       maxDistance : 20
     }
   };
-  request(
-    requestOptions,
-    function(err, response, body) {
+  request(requestOptions, function(err, response, body) {
       renderHomepage(req, res, body);
     }
   );
