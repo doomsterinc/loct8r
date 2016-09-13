@@ -1,5 +1,5 @@
 var request = require('request');
-var apiOption = {
+var apiOptions = {
   server : "http://localhost:3000"
 };
 var renderHomepage = function(req, res) {
@@ -36,7 +36,24 @@ if (process.env.NODE_ENV === "production") {
 }
 /* GET 'home' page */
 module.exports.homelist = function(req, res) {
-  renderHomepage(req, res);
+  var requestOptions, path;
+  path = '/api/locations';
+  requestOptions = {
+    url : apiOptions.server + path,
+    method : "GET",
+    json : {},
+    qs : {
+      lng : -0.7992599,
+      lat : 51.378091,
+      maxDistance : 20
+    }
+  };
+  request(
+    requestOptions,
+    function(err, response, body){
+      renderHomepage(req, res);
+    }
+  );
 };
 
 /* GET 'Location info' page */
