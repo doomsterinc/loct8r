@@ -1,24 +1,27 @@
 var mongoose = require('mongoose');
 var Loc = mongoose.model('Location');
 
-var theEarth = (function(){
-  var earthRadius = 6371;
-  var getDistanceFromRads = function(rads){
-    return parseFloat(rads * earthRadius);
-  };
-  var getRadsFromDistance = function(distance){
-    return parseFloat(distance / earthRadius);
-  };
-  return {
-    getDistanceFromRads : getDistanceFromRads,
-    getRadsFromDistance : getRadsFromDistance
-  };
-})();
-
 var sendJSONresponse = function(res, status, content) {
   res.status(status);
   res.json(content);
 };
+
+var theEarth = (function() {
+  var earthRadius = 6371; // km, miles is 3959
+
+  var getDistanceFromRads = function(rads) {
+    return parseFloat(rads * earthRadius);
+  };
+
+  var getRadsFromDistance = function(distance) {
+    return parseFloat(distance / earthRadius);
+  };
+
+  return {
+    getDistanceFromRads: getDistanceFromRads,
+    getRadsFromDistance: getRadsFromDistance
+  };
+})();
 
 /* GET list of locations */
 module.exports.locationsListByDistance = function(req, res) {
@@ -72,21 +75,29 @@ var buildLocationList = function(req, res, results, stats) {
 
 /* GET a location by the id */
 module.exports.locationsReadOne = function(req, res) {
-  if(req.params && req.params.locationid){
+  console.log('Finding location details', req.params);
+  if (req.params && req.params.locationid) {
     Loc
-        .findById(req.params.locationid)
-        .exec(function(err, location){
-          if(!location){
-            sendJSONresponse(res, 404, {"message": "locationid not found"});
-            return;
-          }else if (err) {
-            sendJSONresponse(res, 404, err);
-            return;
-          }
-          sendJSONresponse(res, 200, location);
-        });
+      .findById(req.params.locationid)
+      .exec(function(err, location) {
+        if (!location) {
+          sendJSONresponse(res, 404, {
+            "message": "locationid not found"
+          });
+          return;
+        } else if (err) {
+          console.log(err);
+          sendJSONresponse(res, 404, err);
+          return;
+        }
+        console.log(location);
+        sendJSONresponse(res, 200, location);
+      });
   } else {
-    sendJSONresponse(res, 404, {"message" : "No locationid in request"});
+    console.log('No locationid specified');
+    sendJSONresponse(res, 404, {
+      "message": "No locationid in request"
+    });
   }
 };
 
@@ -95,25 +106,27 @@ module.exports.locationsReadOne = function(req, res) {
 module.exports.locationsCreate = function(req, res) {
   console.log(req.body);
   Loc.create({
-    name : req.body.name,
+    name: req.body.name,
     address: req.body.address,
     facilities: req.body.facilities.split(","),
-    coords : [parseFloat(req.body.lng), parseFloat(req.body.lat)],
-    openingTimes : [{
+    coords: [parseFloat(req.body.lng), parseFloat(req.body.lat)],
+    openingTimes: [{
       days: req.body.days1,
       opening: req.body.opening1,
       closing: req.body.closing1,
       closed: req.body.closed1,
-    },{
+    }, {
       days: req.body.days2,
       opening: req.body.opening2,
       closing: req.body.closing2,
       closed: req.body.closed2,
     }]
-  },function(err, location){
+  }, function(err, location) {
     if (err) {
+      console.log(err);
       sendJSONresponse(res, 400, err);
     } else {
+      console.log(location);
       sendJSONresponse(res, 201, location);
     }
   });
@@ -123,17 +136,18 @@ module.exports.locationsCreate = function(req, res) {
 module.exports.locationsUpdateOne = function(req, res) {
   if (!req.params.locationid) {
     sendJSONresponse(res, 404, {
-      "message" : "Not found, locationid is required"
+      "message": "Not found, locationid is required"
     });
     return;
   }
   Loc
-      .findById(req.params.locationid)
-      .select("-reviews -rating")
-      .exec(function(err, location){
+    .findById(req.params.locationid)
+    .select('-reviews -rating')
+    .exec(
+      function(err, location) {
         if (!location) {
           sendJSONresponse(res, 404, {
-            "message" : "locationid not found"
+            "message": "locationid not found"
           });
           return;
         } else if (err) {
@@ -145,41 +159,47 @@ module.exports.locationsUpdateOne = function(req, res) {
         location.facilities = req.body.facilities.split(",");
         location.coords = [parseFloat(req.body.lng), parseFloat(req.body.lat)];
         location.openingTimes = [{
-          days : req.body.days1,
-          opening : req.body.opening1,
-          closing : req.body.closing1,
-          closed : req.body.closed1,
+          days: req.body.days1,
+          opening: req.body.opening1,
+          closing: req.body.closing1,
+          closed: req.body.closed1,
         }, {
-          days : req.body.days2,
-          opening : req.body.opening2,
-          closing : req.body.closing2,
-          closed : req.body.closed2,
+          days: req.body.days2,
+          opening: req.body.opening2,
+          closing: req.body.closing2,
+          closed: req.body.closed2,
         }];
-        location.save(function(err, location){
+        location.save(function(err, location) {
           if (err) {
             sendJSONresponse(res, 404, err);
           } else {
             sendJSONresponse(res, 200, location);
           }
         });
-      });
+      }
+  );
 };
 
 /* DELETE /api/locations/:locationid */
 module.exports.locationsDeleteOne = function(req, res) {
   var locationid = req.params.locationid;
-  if (locationid){
+  if (locationid) {
     Loc
-        .findByIdAndRemove(locationid)
-        .exec(function(err, location){
-          if(err) {
+      .findByIdAndRemove(locationid)
+      .exec(
+        function(err, location) {
+          if (err) {
+            console.log(err);
             sendJSONresponse(res, 404, err);
+            return;
           }
+          console.log("Location id " + locationid + " deleted");
           sendJSONresponse(res, 204, null);
-        });
+        }
+    );
   } else {
     sendJSONresponse(res, 404, {
-      "message" : "No locationid"
+      "message": "No locationid"
     });
   }
 };

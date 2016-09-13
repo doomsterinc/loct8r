@@ -1,59 +1,32 @@
-var request = require('request');
-var apiOptions = {
-  server : "http://localhost:3000"
-};
-var renderHomepage = function(req, res) {
-  res.render('locations-list', {
-      title: 'Loct8r - find a place to work with wifi',
-      pageHeader: {
-          title: 'loct8r',
-          strapline: 'Find places to work with wifi near you!'
-      },
-      sidebar: "Looking for wifi and a seat? loct8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let loct8r help you find the place you're looking for.",
-      locations: [{
-          name: 'Starcups',
-          address: '125 High Street, Reading, RG6 1PS',
-          rating: 3,
-          facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-          distance: '100m'
-      }, {
-          name: 'Cafe Hero',
-          address: '125 High Street, Reading, RG6 1PS',
-          rating: 4,
-          facilities: ['Hot drinks', 'Food', 'Premium wifi'],
-          distance: '200m'
-      }, {
-          name: 'Burger Queen',
-          address: '125 High Street, Reading, RG6 1PS',
-          rating: 2,
-          facilities: ['Food', 'Premium wifi'],
-          distance: '250m'
-      }]
-  });
-};
-if (process.env.NODE_ENV === "production") {
-  apiOption.server = "https://arcane-fortress-27171.herokuapp.com/"
-}
 /* GET 'home' page */
 module.exports.homelist = function(req, res) {
-  var requestOptions, path;
-  path = '/api/locations';
-  requestOptions = {
-    url : apiOptions.server + path,
-    method : "GET",
-    json : {},
-    qs : {
-      lng : -0.7992599,
-      lat : 51.378091,
-      maxDistance : 20
-    }
-  };
-  request(
-    requestOptions,
-    function(err, response, body){
-      renderHomepage(req, res);
-    }
-  );
+    res.render('locations-list', {
+        title: 'loct8r - find a place to work with wifi',
+        pageHeader: {
+            title: 'loct8r',
+            strapline: 'Find places to work with wifi near you!'
+        },
+        sidebar: "Looking for wifi and a seat? loct8r helps you find places to work when out and about. Perhaps with coffee, cake or a pint? Let loct8r help you find the place you're looking for.",
+        locations: [{
+            name: 'Starcups',
+            address: '125 High Street, Reading, RG6 1PS',
+            rating: 3,
+            facilities: ['Hot drinks', 'Food', 'Premium wifi'],
+            distance: '100m'
+        }, {
+            name: 'Cafe Hero',
+            address: '125 High Street, Reading, RG6 1PS',
+            rating: 4,
+            facilities: ['Hot drinks', 'Food', 'Premium wifi'],
+            distance: '200m'
+        }, {
+            name: 'Burger Queen',
+            address: '125 High Street, Reading, RG6 1PS',
+            rating: 2,
+            facilities: ['Food', 'Premium wifi'],
+            distance: '250m'
+        }]
+    });
 };
 
 /* GET 'Location info' page */
