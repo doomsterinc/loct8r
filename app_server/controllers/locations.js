@@ -107,6 +107,8 @@ module.exports.locationInfo = function(req, res) {
         lat : body.coords[1]
       };
       renderDetailPage(req, res, data);
+    } else {
+      _showError(req, res, response.statusCode);
     }
   });
 };
