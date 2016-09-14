@@ -131,18 +131,12 @@ module.exports.homelist = function(req, res) {
 
 /* GET 'Location info' page */
 module.exports.locationInfo = function(req, res) {
-
+  getLocationInfo(req, res, function(req, res, responseData){
+    renderDetailPage(req, res, responseData);
+  });
 };
 
-/* GET 'Add review' page */
-module.exports.addReview = function(req, res) {
-    res.render('location-review-form', {
-        title: 'Review Starcups on loct8r',
-        pageHeader: {
-            title: 'Review Starcups'
-        }
-    });
-};
+//render form review
 var renderReviewForm = function (req, res) {
   res.render('location-review-form', {
       title: 'Review Starcups on loct8r',
@@ -151,6 +145,13 @@ var renderReviewForm = function (req, res) {
       }
   });
 };
+/* GET 'Add review' page */
+module.exports.addReview = function(req, res) {
+  getLocationInfo(req, res, function(req, res, responseData){
+    renderReviewForm(req, res, responseData);
+  });
+};
+
 /* POST 'Add review' page */
 module.exports.doAddReview = function(req, res) {
   renderReviewForm(req, res);
