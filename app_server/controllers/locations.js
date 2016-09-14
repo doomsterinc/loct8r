@@ -154,5 +154,12 @@ module.exports.addReview = function(req, res, loc) {
 
 /* POST 'Add review' page */
 module.exports.doAddReview = function(req, res) {
-  renderReviewForm(req, res);
+  var requestOptions, path, locationid, postdata;
+  locationid = req.params.locationid;
+  path = "/api/locations/" + locationid + "/reviews";
+  postdata = {
+    author : req.body.name,
+    rating : parseInt(req.body.rating, 10),
+    reviewText : req.body.review
+  };
 };
