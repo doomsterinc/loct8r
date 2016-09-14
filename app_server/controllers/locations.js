@@ -139,3 +139,13 @@ module.exports.addReview = function(req, res) {
         }
     });
 };
+
+/* POST 'Add review' page */
+module.exports.doAddReview = function(req, res) {
+    res.render('location-review-form', {
+        title: 'Review Starcups on loct8r',
+        pageHeader: {
+            title: 'Review Starcups'
+        }
+    });
+};
