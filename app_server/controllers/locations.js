@@ -101,11 +101,13 @@ module.exports.locationInfo = function(req, res) {
   };
   request(requestOptions, function(err, response, body){
     var data = body;
-    data.coords = {
-      lng : body.coords[0],
-      lat : body.coords[1]
-    };
-    renderDetailPage(req, res, data);
+    if (response.statusCode === 200) {
+      data.coords = {
+        lng : body.coords[0],
+        lat : body.coords[1]
+      };
+      renderDetailPage(req, res, data);
+    }
   });
 };
 
