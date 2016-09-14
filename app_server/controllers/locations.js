@@ -126,7 +126,16 @@ module.exports.homelist = function(req, res) {
 
 /* GET 'Location info' page */
 module.exports.locationInfo = function(req, res) {
-  renderDetailPage(req, res);
+  var requestOptions, path;
+  path = "/api/locations/" + req.params.locationid;
+  requestOptions = {
+    url : apiOptions.server + path,
+    method : 'GET',
+    json: {}
+  };
+  request(requestOptions, function(err, response, body){
+    renderDetailPage(req, res);
+  });
 };
 
 /* GET 'Add review' page */
