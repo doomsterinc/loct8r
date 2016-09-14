@@ -137,16 +137,16 @@ module.exports.locationInfo = function(req, res) {
 };
 
 //render form review
-var renderReviewForm = function (req, res) {
+var renderReviewForm = function (req, res, locDetail) {
   res.render('location-review-form', {
-      title: 'Review Starcups on loct8r',
+      title: 'Review ' + locDetail.name + ' on loct8r',
       pageHeader: {
-          title: 'Review Starcups'
+          title: 'Review ' + locDetail.name
       }
   });
 };
 /* GET 'Add review' page */
-module.exports.addReview = function(req, res) {
+module.exports.addReview = function(req, res, loc) {
   getLocationInfo(req, res, function(req, res, responseData){
     renderReviewForm(req, res, responseData);
   });
