@@ -65,8 +65,13 @@ var renderDetailPage = function (req, res, locDetail){
 };
 //treating errors in location info details
 var _showError = function(req, res, status){
-  
+    var title, content;
+    if (status === 404) {
+      title = "404, page not found";
+      content = "Oh dear. Looks like we can't find this page. Sorry.";
+    }
 };
+
 /* GET 'home' page */
 module.exports.homelist = function(req, res) {
   var requestOptions, path;
