@@ -75,7 +75,7 @@ var _showError = function(req, res, status){
     }
     res.status(status);
     res.render('generic-text', {
-      title : tile,
+      title : title,
       content : content
     });
 };
