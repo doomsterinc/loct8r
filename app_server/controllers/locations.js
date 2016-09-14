@@ -130,16 +130,12 @@ module.exports.locationInfo = function(req, res) {
   path = "/api/locations/" + req.params.locationid;
   requestOptions = {
     url : apiOptions.server + path,
-    method : 'GET',
+    method : "GET",
     json: {}
   };
   request(requestOptions, function(err, response, body){
-    var data = body;
-    data.coords = {
-      lng : body.coords[0],
-      lat : body.coords[1]
-    };
-    renderDetailPage(req, res, data);
+    console.log(req.params.locationid);
+    renderDetailPage(req, res);
   });
 };
 
