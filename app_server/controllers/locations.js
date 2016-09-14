@@ -63,6 +63,10 @@ var renderDetailPage = function (req, res, locDetail){
       location: locDetail
   });
 };
+//treating errors in location info details
+var _showError = function(req, res, status){
+  
+};
 /* GET 'home' page */
 module.exports.homelist = function(req, res) {
   var requestOptions, path;
