@@ -19,8 +19,7 @@ block content
               span.badge.pull-right.badge-default {{ location.distance }}
             p.address {{ location.address }}
             p
-                span.label.label-warning.label-facility(ng-repeat="facility in location.facilities")
-                | {{ facilities }}
-                | &nbsp;
+                span.label.label-warning.label-facility(ng-repeat="facility in location.facilities"){{ facility }}
+                | &nbsp; &nbsp; 
     .col-xs-12.col-sm-4
       p.lead= sidebar
