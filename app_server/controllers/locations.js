@@ -6,7 +6,7 @@ if (process.env.NODE_ENV === 'production') {
   apiOptions.server = 'http://arcane-fortress-27171.herokuapp.com/';
 }
 
-// format distance
+// format distance 
 var _isNumeric = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
 };
