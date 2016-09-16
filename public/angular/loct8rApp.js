@@ -22,6 +22,12 @@ var formatDistance = function () {
   };
 };
 
+var ratingStars = function () {
+  return {
+    template : "{{ location.rating }}"
+  };
+};
+
 //console.log("Hello from the Angular");
 var locationListCtrl = function($scope) {
   $scope.data = {
