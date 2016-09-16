@@ -80,4 +80,5 @@ var locationListCtrl = function($scope) {
 angular
     .module('loct8rApp')
     .controller('locationListCtrl', locationListCtrl)
-    .filter('formatDistance', formatDistance);
+    .filter('formatDistance', formatDistance)
+    .directive('ratingStars', ratingStars);
