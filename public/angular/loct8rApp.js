@@ -1,5 +1,10 @@
 angular.module('loct8rApp', []);
 
+var _isNumeric = function (n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+};
+
+
 //console.log("Hello from the Angular");
 var locationListCtrl = function($scope) {
   $scope.data = {
