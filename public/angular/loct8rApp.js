@@ -27,7 +27,7 @@ var ratingStars = function () {
     scope : {
       thisRating : '=rating'
     },
-    template : "{{ thisRating }}"
+    template : "/angular/rating-stars.html"
   };
 };
 
