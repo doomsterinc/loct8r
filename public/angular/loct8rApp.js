@@ -32,16 +32,20 @@ var ratingStars = function () {
 };
 
 //console.log("Hello from the Angular");
-var locationListCtrl = function($scope, loct8rData) {
-  $scope.message = "Searching for nearby places";
-  loct8rData
-      .success(function(data){
-        $scope.message = data.length > 0 ? "": "No locations found";
-        $scope.data = {locations: data};
-      })
-      .error(function(e){
-        $scope.message = "Sorry, something's gone wrong";
-      });
+var locationListCtrl = function($scope, loct8rData, geolocation) {
+  $scope.message = "Checking your location";
+  $scope.getData = function (position) {
+    $scope.message = "Searching for nearby places";
+    loct8rData
+        .success(function(data){
+          $scope.message = data.length > 0 ? "": "No locations found";
+          $scope.data = {locations: data};
+        })
+        .error(function(e){
+          $scope.message = "Sorry, something's gone wrong";
+        });
+  };
+  
 };
 
 var loct8rData = function($http){
