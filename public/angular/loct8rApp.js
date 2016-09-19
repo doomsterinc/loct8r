@@ -108,4 +108,5 @@ angular
     .controller('locationListCtrl', locationListCtrl)
     .filter('formatDistance', formatDistance)
     .directive('ratingStars', ratingStars)
-    .service('loct8rData', loct8rData);
+    .service('loct8rData', loct8rData)
+    .service('geolocation', geolocation);
