@@ -91,6 +91,9 @@ var loct8rData = function($http){
   //     _id: '5370a35f2536f6785f8dfb6a'
   //   }];
 };
+var geolocation = function(){
+  var getPosition = function(){};
+};
 angular
     .module('loct8rApp')
     .controller('locationListCtrl', locationListCtrl)
