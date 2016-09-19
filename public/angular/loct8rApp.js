@@ -45,7 +45,18 @@ var locationListCtrl = function($scope, loct8rData, geolocation) {
           $scope.message = "Sorry, something's gone wrong";
         });
   };
-  
+  $scope.showError =function (error) {
+    $scope.$apply(function(){
+      $scope.message = error.message;
+    });
+  };
+  $scope.noGeo = function(){
+    $scope.$apply(function(){
+      $scope.message = "Geolocation not supported by this browser";
+    });
+  };
+
+  geolocation.getPosition($scope.getData, $scope.showError, $scope.noGeo);
 };
 
 var loct8rData = function($http){
