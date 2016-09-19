@@ -33,11 +33,19 @@ var ratingStars = function () {
 
 //console.log("Hello from the Angular");
 var locationListCtrl = function($scope, loct8rData) {
-  $scope.data = {locations : loct8rData};
+  $scope.message = "Searching for nearby places";
+  loct8rData
+      .success(function(data){
+        $scope.message = data.length > 0 ? "": "No locations found";
+        $scope.data = {locations: data};
+      })
+      .error(function(e){
+        $scope.message = "Sorry, something's gone wrong";
+      });
 };
 
 var loct8rData = function($http){
-  return $http.get('/api/locations?lng=-0.79&lat=51.3&maxDistance=20');
+  return $http.get('/api/locations?lng=-0.7992599&lat=51.378091&maxDistance=20');
   // static data for tests
   // [{
   //     name: 'Burger Queen',
