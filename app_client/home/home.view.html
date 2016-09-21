@@ -1,0 +1,24 @@
+<div id="banner" class="page-header">
+  <div class="row">
+    <div class="col-lg-6"></div>
+      <h1>
+        {{ pageHeader.title }}
+        <small>{{ pageHeader.strapline }}</small>
+      </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-8">
+    <label for="filter">Filter Results</label>
+    <input id="filter" type="text", name="name", ng-model="textFilter">
+    <div class="error">
+      {{ message }}
+    </div>
+    <div class="row list-group">
+      <div class="col-xs-12 list-group-item" ng-repeat="location in data.locations">
+
+      </div>
+    </div>
+  </div>
+</div>
