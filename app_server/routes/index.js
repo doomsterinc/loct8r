@@ -9,7 +9,7 @@ router.get('/', ctrlOthers.angularApp);
 // router.get('/location/:locationid/reviews/new', ctrlLocations.addReview);
 // router.post('/location/:locationid/reviews/new', ctrlLocations.doAddReview);
 //
-// /* Other pages */
-// router.get('/about', ctrlOthers.about);
+/* Other pages */
+router.get('/about', ctrlOthers.about);
 
 module.exports = router;
