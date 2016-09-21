@@ -24,7 +24,6 @@
         .success(function(data) {
           vm.message = data.length > 0 ? "" : "No locations found nearby";
           vm.data = { locations: data };
-          console.log(vm.data);
         })
         .error(function (e) {
           vm.message = "Sorry, something's gone wrong, please try again later";

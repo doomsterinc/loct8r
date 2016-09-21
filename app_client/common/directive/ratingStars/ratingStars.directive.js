@@ -1,16 +1,18 @@
-(function () {}
+(function () {
 
   angular
-      .module('loct8rApp')
-      .directive('ratingStars', ratingStars);
+    .module('loct8rApp')
+    .directive('ratingStars', ratingStars);
 
   function ratingStars () {
     return {
       restrict: 'EA',
       scope: {
-        thisRating: '#rating'
+        thisRating : '=rating'
       },
-      templateUrl: "common/directives/ratingStars/ratingStars.template.html"
-    }
-  };
+      templateUrl: '/common/directive/ratingStars/ratingStars.template.html'
+    };
+  }
+
+
 })();
