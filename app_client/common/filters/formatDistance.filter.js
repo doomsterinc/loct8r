@@ -1,6 +1,6 @@
 angular
     .module('loct8rApp')
-    .filter('formatDistance',formatDistance);
+    .filter('formatDistance', formatDistance);
 
 var _isNumeric = function (n) {
   return !isNaN(parseFloat(n)) && isFinite(n);
