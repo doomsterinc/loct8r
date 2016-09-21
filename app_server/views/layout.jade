@@ -20,7 +20,8 @@ html(ng-app='loct8rApp')
               a(href='/about/') About
 
     .container
-      block content
+      div(ng-view)
+        block content
 
       footer
         .row
@@ -31,5 +32,5 @@ html(ng-app='loct8rApp')
     script(src='/bootstrap/js/bootstrap.min.js')
     script(src='/javascripts/validation.js')
     script(src='/angular/angular.min.js')
-    cript(src='/lib/angular-route.min.js')
-    script(src='/angular/app.js')
+    script(src='/lib/angular-route.min.js')
+    script(src='/app.js')
