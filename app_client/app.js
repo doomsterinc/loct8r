@@ -9,9 +9,9 @@
         controller: 'homeCtrl',
         controllerAs: 'vm'
       })
-      .when('/', {
-        templateUrl: 'home/home.view.html',
-        controller: 'homeCtrl',
+      .when('/about', {
+        templateUrl: 'common/views/genericText.view.html',
+        controller: 'aboutCtrl',
         controllerAs: 'vm'
       })
       .otherwise({redirectTo: '/'});
