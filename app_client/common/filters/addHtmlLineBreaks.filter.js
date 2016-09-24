@@ -5,7 +5,7 @@
 
   function addHtmlLineBreaks() {
     return function(text){
-      var output = replace(/\n/g, '<br/>');
+      var output = text.replace(/\n/g, '<br/>');
       return output;
     };
   }
