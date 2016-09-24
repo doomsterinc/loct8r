@@ -9,6 +9,11 @@
         controller: 'homeCtrl',
         controllerAs: 'vm'
       })
+      .when('/', {
+        templateUrl: 'home/home.view.html',
+        controller: 'homeCtrl',
+        controllerAs: 'vm'
+      })
       .otherwise({redirectTo: '/'});
 
     $locationProvider.html5Mode(true);
