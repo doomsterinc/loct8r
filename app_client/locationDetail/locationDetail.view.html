@@ -24,7 +24,17 @@
         </div>
       </div>
     </div>
-    
+    <div class="col-xs-12 col-sm-6 location-map">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h2 class="panel-title">Location Map</h2>
+          </div>
+          <div class="panel-body">
+            <img src="http://maps.googleapis.com/maps/api/staticmap?center={{ vm.data.location.coords[1] },{{ vm.data.location.coords[0] }}}&amp;zoom=17&amp;size=400x350&amp;sensor=false&amp;markers={{ vm.data.location.coords[1] }},{{ vm.data.location.coords[0] }}&amp;scale=2" class="img-responsive img-rounded" alt="Location Map" />
+          </div>
+        </div>
+    </div>
   </div>
+  
   <footer-generic></footer-generic>
 </div>
