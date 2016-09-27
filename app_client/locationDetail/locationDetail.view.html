@@ -13,7 +13,18 @@
           <!-- the hours opening is here -->
         </div>
       </div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2 class="panel-title">Facilities</h2>
+        </div>
+        <div class="panel-body">
+          <span class="label label-warning label-facility" ng-repeat="facility in vm.data.location.facilities">
+            {{ facility }}
+          </span>
+        </div>
+      </div>
     </div>
+    
   </div>
   <footer-generic></footer-generic>
 </div>
