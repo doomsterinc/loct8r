@@ -1,5 +1,19 @@
 <navigation></navigation>
 <div class="container">
   <page-header content="vm.pageHeader"></page-header>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <p class="rating" rating-stars rating="vm.data.location.rating"></p>
+      <p>{{ vm.data.location.address }}</p>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h2 class="panel-title">Opening Hours</h2>
+        </div>
+        <div class="panel-body">
+          <!-- the hours opening is here -->
+        </div>
+      </div>
+    </div>
+  </div>
   <footer-generic></footer-generic>
 </div>
