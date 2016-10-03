@@ -48,12 +48,12 @@
           <h2>Customer Reviews</h2>
         </div>
         <div class="panel-body review-container">
-          <div class="review" ng-repeat="review in vm.data.location.reviews">
+          <div class="review" ng-repeat="review in vm.data.location.reviews | orderBy:'createdOn':true">
             <div class="row">
               <div class="well well-sm review-reader">
                 <span class="rating" rating-stars rating="review.rating"></span>
                 <span class="reviewAuthor">{{ review.author }}</span>
-                <span class="reviewTimestamp">{{ review.createdOn }}</span>
+                <span class="reviewTimestamp">{{ review.createdOn | date : 'd MMMM yyyy' }}</span>
               </div>
               <div class="col-xs-12">
                 <p ng-bind-html="review.reviewText | addHtmlLineBreaks"></p>
