@@ -45,13 +45,23 @@
         <div class="panel-body review-container">
           <div class="review" ng-repeat="review in vm.data.location.reviews">
             <div class="row">
-              <div class="">
-
+              <div class="well well-sm review-reader">
+                <span class="rating" rating-stars rating="review.rating"></span>
+                <span class="reviewAuthor">{{ review.author }}</span>
+                <span class="reviewTimestamp">{{ review.createdOn }}</span>
+              </div>
+              <div class="col-xs-12">
+                <p ng-bind-html="review.reviewText | addHtmlLineBreaks"></p>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="col-xs-12 col-md-3">
+      <p class="">
+
+      </p>
     </div>
   </div>
 
