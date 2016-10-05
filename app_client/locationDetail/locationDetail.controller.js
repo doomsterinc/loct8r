@@ -18,5 +18,8 @@
         .error(function(e){
           console.log(e);
         });
+    vm.popupReviewForm = function () {
+      alert("Let's add a review!");
+    };
   }
 })();
