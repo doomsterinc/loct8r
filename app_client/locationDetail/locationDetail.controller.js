@@ -3,8 +3,8 @@
       .module('loct8rApp')
       .controller('locationDetailCtrl', locationDetailCtrl);
 
-  locationDetailCtrl.$inject = ['$routeParams', 'loct8rData'];
-  function locationDetailCtrl($routeParams, loct8rData) {
+  locationDetailCtrl.$inject = ['$routeParams', '$modal', 'loct8rData'];
+  function locationDetailCtrl($routeParams, $modal, loct8rData) {
     var vm = this;
     vm.locationid = $routeParams.locationid;
 
