@@ -19,7 +19,10 @@
           console.log(e);
         });
     vm.popupReviewForm = function () {
-      
+      var modalInstance = $modal.open({
+        tempUrl : '/reviewModal/reviewModal.view.html',
+        controller: 'reviewModal as vm',
+      });
     };
   }
 })();
