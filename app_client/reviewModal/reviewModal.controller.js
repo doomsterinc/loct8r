@@ -2,8 +2,8 @@
   angular
     .modlule('loct8rApp')
     .controller('reviewModal', reviewModal);
-  reviewModal.$inject=['$modalInstance'];
-  function reviewModal($modalInstance) {
+  reviewModal.$inject=['$modalInstance', 'locationData'];
+  function reviewModal($modalInstance, locationData) {
     var vm = this;
 
     vm.modal = {
