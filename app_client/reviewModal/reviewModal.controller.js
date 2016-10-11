@@ -12,6 +12,9 @@
       }
     };
 
-    vm.onSubmit= function(){};
+    vm.onSubmit= function(){
+      console.log((vm.formData));
+      return false;
+    };
   }
 })();
