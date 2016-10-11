@@ -11,5 +11,7 @@
         $modalInstance.dismiss('cancel');
       }
     };
+
+    vm.onSubmit= function(){};
   }
 })();
