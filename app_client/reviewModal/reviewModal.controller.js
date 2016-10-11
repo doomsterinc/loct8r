@@ -13,8 +13,13 @@
     };
 
     vm.onSubmit= function(){
-      console.log((vm.formData));
-      return false;
+      vm.formError = "";
+      if () {
+
+      }else {
+        console.log((vm.formData));
+        return false;
+      }
     };
   }
 })();
