@@ -22,6 +22,9 @@
       var modalInstance = $modal.open({
         tempUrl : '/reviewModal/reviewModal.view.html',
         controller: 'reviewModal as vm',
+        resolve: {
+          
+        }
       });
     };
   }
