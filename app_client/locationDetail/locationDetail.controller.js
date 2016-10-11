@@ -23,7 +23,8 @@
         tempUrl : '/reviewModal/reviewModal.view.html',
         controller: 'reviewModal as vm',
         resolve: {
-          
+          locationid: vm.locationid,
+          locationName: vm.data.location.name
         }
       });
     };
