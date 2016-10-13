@@ -34,5 +34,5 @@ userSchema.methods.generateJwt = function(){
     email: this.email,
     name: this.name,
     exp: parseInt(expire.getTime() / 1000),
-  }, 'thisIsSecret');
+  }, process.env.JWT_SECRET);
 };
