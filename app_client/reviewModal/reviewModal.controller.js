@@ -6,12 +6,6 @@
   function reviewModal($modalInstance, loct8rData, locationData) {
     var vm = this;
 
-    vm.modal = {
-      cancel: function(){
-        $modalInstance.dismiss('cancel');
-      }
-    };
-
     vm.onSubmit= function(){
       vm.formError = "";
       if (!vm.formData.name || !vm.formData.rating || !vm.formData.reviewText) {
@@ -29,11 +23,20 @@
         reviewText: formData.reviewText
       })
         .success(function(data){
-          console.log('Success!');
+          vm.modal.close(data);
         })
         .error(function(data){
           vm.formError = "Your review has not been saved, try again!";
         });
+    };
+
+    vm.modal = {
+      close: function(result){
+        $modalInstance.close(result);
+      },
+      cancel: function(){
+        $modalInstance.dismiss('cancel');
+      }
     };
   }
 })();
