@@ -18,9 +18,22 @@
         vm.formError = "All fields required, please try again!";
         return false;
       } else {
-        console.log((vm.formData));
-        return false;
+        vm.doAddReview(vm.locationData.locationid, vm.formData);
       }
+    };
+
+    vm.doAddReview = function(locationid, formData){
+      loct8rData.addReviewById(locationid, {
+        author: formData.name,
+        rating: formData.rating,
+        reviewText: formData.reviewText
+      })
+        .success(function(data){
+          console.log('Success!');
+        })
+        .error(function(data){
+          vm.formError = "Your review has not been saved, try again!";
+        });
     };
   }
 })();
