@@ -1,10 +1,21 @@
-# Loct8r
-WebApp with NodeJS, Express, AngularJS an MongoDB
-  
-## Install and use
+# loct8r
 
-```
+[Release Status]()
+
+> Get establishments with Wi-Fi and other facilities according to its locationGet establishments with Wi-Fi and other facilities according to its location.
+
+## Installation
+
+```console
 npm install
-npm init
-
 ```
+
+## Usage
+
+```sh
+npm init
+```
+
+## License
+
+[MIT](https://github.com/doomsterinc/licenses/blob/master/MIT-LICENSE.md) &copy; Maicon Giovani (Doomster)
