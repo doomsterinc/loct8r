@@ -35,10 +35,20 @@
 
       if (token) {
         var payload = JSON.parse($window.atob(token.split('.')[1]));
-
         return payload.exp > Date.now() / 1000;
       } else {
         return false;
+      }
+    };
+
+    var currentUser = function() {
+      if (isLoggedIn()) {
+        var token = getToken();
+        var payload = JSON.parse($window.atob(token.split('.')[1]));
+        return {
+          email: payload.email,
+          name: payload.name
+        };
       }
     };
 
@@ -46,7 +56,9 @@
       saveToken: saveToken,
       getToken: getToken,
       register: register,
-      login: login
+      login: login,
+      isLoggedIn: isLoggedIn,
+      currentUser: currentUser
     };
   }
 })();
